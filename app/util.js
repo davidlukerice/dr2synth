@@ -1,11 +1,13 @@
-DR2Synth.Util = (function() {
+(function() {
   var Util = {};
+  DR2Synth.Util = Util;
 
   var TWELTH_ROOT = Math.pow(2,1/12);
   var A4 = 440;
   var DISTANCE_FROM_A = {
     c:-9, d:-7, e:-5, f:-4, g:-2, a:0, b:2
   };
+
   /**
     Gets the frequency based on an equal tempered scale
     with A4 = 440
@@ -34,6 +36,4 @@ DR2Synth.Util = (function() {
   Util.frequencyOfStepsFromRootNote = function(steps) {
     return A4 * Math.pow(TWELTH_ROOT, steps);
   };
-
-  return Util;
 })();

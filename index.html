@@ -3,20 +3,134 @@
   <head>
     <meta charset="utf-8">
     <title>DR2Synth</title>
+
+    <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.css">
   </head>
   <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            DR2Synth
+          </a>
+        </div>
+      </div>
+    </nav>
+
     <div class="d2synth">
-      <button type="button" name="button" data-note="c4">Play (c4)</button>
-      <button type="button" name="button" data-note="d4">Play (d4)</button>
-      <button type="button" name="button" data-note="e4">Play (e4)</button>
-      <button type="button" name="button" data-note="f4">Play (f4)</button>
-      <button type="button" name="button" data-note="g4">Play (g4)</button>
+      <div class="container-fluid">
+        <div class="row">
+
+          <div class="col-md-4">
+            <div class="oscillator-controls panel panel-info">
+              <div class="panel-heading">Oscillators</div>
+              <div class="panel-body">
+                <div class="row">
+                  <div class="oscillator1-controls col-md-12">
+                    <h4>Oscillator 1</h4>
+                    <!--
+                    <div tabindex="0" style="position: relative; width: 100px; height: 100px;">
+                      <input class="preset3" type="range" min="0" max="10" data-width="100" data-height="100" data-angleoffset="220" data-anglerange="280" tabindex="-1" style="position: absolute; top: -10000px;">
+                    </div>
+                  -->
+                    Freq, Fine, Type, Mix
+                  </div>
+                  <div class="oscillator2-controls col-md-12">
+                    <h4>Oscillator 2</h4>
+                    Freq, Fine, Type, Noise
+
+                  </div>
+                </div>
+                <div class="row">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="adsr-controls panel panel-default">
+              <div class="panel-heading">ADSR</div>
+              <div class="panel-body">
+                TODO
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="lfo-controls panel panel-default">
+              <div class="panel-heading">LFO</div>
+              <div class="panel-body">
+                TODO
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="filter-controls panel panel-default">
+              <div class="panel-heading">Filter</div>
+              <div class="panel-body">
+                TODO
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="feedback-controls panel panel-info">
+              <div class="panel-heading">Feedback Delay</div>
+              <div class="panel-body">
+                TODO
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="reverb-controls panel panel-info">
+              <div class="panel-heading">Reverb</div>
+              <div class="panel-body">
+                TODO
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="out-controls panel panel-info">
+              <div class="panel-heading">Out</div>
+              <div class="panel-body">
+                0.5
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="keyboard-controls panel panel-info">
+              <div class="panel-heading">Keyboard</div>
+              <div class="panel-body">
+                <button type="button" name="button" data-note="c4">c4</button>
+                <button type="button" name="button" data-note="d4">d4</button>
+                <button type="button" name="button" data-note="e4">e4</button>
+                <button type="button" name="button" data-note="f4">f4</button>
+                <button type="button" name="button" data-note="g4">g4</button>
+                <button type="button" name="button" data-note="a4">a4</button>
+                <button type="button" name="button" data-note="b4">b4</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="./node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
+    <script src="./app/webAudioComponents/filter.js" charset="utf-8"></script>
+    <script src="./app/webAudioComponents/delay.js" charset="utf-8"></script>
+    <script src="./app/webAudioComponents/reverb.js" charset="utf-8"></script>
+
     <script src="./app/dr2synth.js" charset="utf-8"></script>
     <script src="./app/util.js" charset="utf-8"></script>
     <script src="./app/synth.js" charset="utf-8"></script>
+    <script src="./app/inputHandler.js" charset="utf-8"></script>
+
     <script src="./app/app.js" charset="utf-8"></script>
   </body>
 </html>
