@@ -1,0 +1,30 @@
+{
+  "name": "dr2synth",
+  "version": "0.0.1",
+  "description": "A 2 Osc/Voice synthesizer using web audio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidlukerice/dr2synth.git"
+  },
+  "keywords": [
+    "web",
+    "audio",
+    "synth",
+    "synthesizer",
+    "oscillator"
+  ],
+  "author": "DavidLukeRice",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidlukerice/dr2synth/issues"
+  },
+  "homepage": "https://github.com/davidlukerice/dr2synth#readme",
+  "dependencies": {
+    "jim-knopf": "git+https://github.com/eskimoblood/jim-knopf.git",
+    "jquery": "^2.1.4"
+  }
+}
