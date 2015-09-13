@@ -7,5 +7,20 @@
       synth.play($(this).data('note'));
     });
 
+    $synth.find('.module .power').click(function() {
+      var $module = $(this).parents('.module');
+      var module = $module.data('module');
+      synth.toggleModulePower(module);
+      if (synth.moduleHasPower(module)) {
+        $module.addClass('panel-info');
+        $module.removeClass('panel-default');
+      }
+      else {
+        $module.addClass('panel-default');
+        $module.removeClass('panel-info');
+      }
+
+    });
+
   };
 })();

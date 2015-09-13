@@ -5,6 +5,8 @@
     <title>DR2Synth</title>
 
     <link rel="stylesheet" type="text/css" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="./app/style/dr2synth.css">
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -22,7 +24,7 @@
         <div class="row">
 
           <div class="col-md-4">
-            <div class="oscillator-controls panel panel-info">
+            <div class="oscillator-controls module panel panel-info">
               <div class="panel-heading">Oscillators</div>
               <div class="panel-body">
                 <div class="row">
@@ -76,8 +78,8 @@
           </div>
 
           <div class="col-md-4">
-            <div class="feedback-controls panel panel-info">
-              <div class="panel-heading">Feedback Delay</div>
+            <div class="feedback-controls module panel panel-default" data-module="feedbackDelay">
+              <div class="panel-heading">Feedback Delay  <i class="fa fa-power-off pull-right btn power"></i></div>
               <div class="panel-body">
                 TODO
               </div>
@@ -85,8 +87,8 @@
           </div>
 
           <div class="col-md-4">
-            <div class="reverb-controls panel panel-info">
-              <div class="panel-heading">Reverb</div>
+            <div class="reverb-controls module panel panel-default" data-module="reverb">
+              <div class="panel-heading">Reverb <i class="fa fa-power-off pull-right btn power"></i></div>
               <div class="panel-body">
                 TODO
               </div>
@@ -94,7 +96,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="out-controls panel panel-info">
+            <div class="out-controls module panel panel-info">
               <div class="panel-heading">Out</div>
               <div class="panel-body">
                 0.5
@@ -103,7 +105,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="keyboard-controls panel panel-info">
+            <div class="keyboard-controls module panel panel-info">
               <div class="panel-heading">Keyboard</div>
               <div class="panel-body">
                 <button type="button" name="button" data-note="c4">c4</button>

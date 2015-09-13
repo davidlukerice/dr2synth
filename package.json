@@ -25,9 +25,7 @@
   "homepage": "https://github.com/davidlukerice/dr2synth#readme",
   "dependencies": {
     "bootstrap": "3.3.5",
-    "delay": "git+ssh://git@github.com:web-audio-components/delay.git",
-    "jim-knopf": "git+https://github.com/eskimoblood/jim-knopf.git",
-    "jquery": "2.1.4",
-    "simple-reverb": "git+ssh://it@github.com:web-audio-components/simple-reverb.git"
+    "font-awesome": "4.4.0",
+    "jquery": "2.1.4"
   }
 }

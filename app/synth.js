@@ -15,6 +15,27 @@
     };
     this.outGain = 0.5;
 
+    this.modules = {
+      'feedbackDelay': {
+        hasPower: false,
+        settings: {
+          type: 2, //0: normal, 1: inverted, 2: ping pong.
+          delay: 1.0, //Signal delay time in seconds.
+          feedback: 0.42, //Signal feedback coefficient.
+          offset: -0.027, //Stereo offset amount (seconds). Lets you time offset the left or right channel to create a richer stereo panorama.
+          cutoff: 800 //Lowpass filter cutoff frequency applied to the delayed signal.
+        }
+      },
+      'reverb': {
+        hasPower: false,
+        settings: {
+          seconds: 1, //Impulse response length.
+          decay: 1, //Impulse response decay rate.
+          reverse: 1 // Reverse the impulse response.
+        }
+      }
+    };
+
     var audioContext = new (AudioContext || webkitAudioContext)();
 
     function determineSubNote(note) {
@@ -39,26 +60,14 @@
     }
 
     function createFeedbackDelayModule() {
-      var delayNode = new Delay(audioContext, {
-        type: 0,
-        delay: 1.0,
-        feedback: 0.42,
-        offset: -0.027,
-        cutoff: 800
-      });
-
+      var delayNode = new Delay(audioContext, this.modules.feedbackDelay.settings);
       return {
         delayNode: delayNode
       };
     }
 
     function createReverbModule() {
-      var reverbNode = new SimpleReverb(audioContext, {
-        seconds: 1,
-        decay: 1,
-        reverse: 1
-      });
-
+      var reverbNode = new SimpleReverb(audioContext, this.modules.reverb.settings);
       return {
         reverbNode: reverbNode
       };
@@ -89,18 +98,34 @@
       // Wire up the modules
       outModule.gainNode.connect(audioContext.destination);
 
-      reverbModule.reverbNode.connect(outModule.gainNode);
-      feedbackDelayModule.delayNode.connect(reverbModule.reverbNode.input);
+      var nextNode = outModule.gainNode;
 
-      oscModule.osc1Node.connect(feedbackDelayModule.delayNode.input);
-      oscModule.osc2Node.connect(feedbackDelayModule.delayNode.input);
+      if (this.modules.reverb.hasPower) {
+        reverbModule.reverbNode.connect(nextNode);
+        nextNode = reverbModule.reverbNode.input;
+      }
+      if (this.modules.feedbackDelay.hasPower) {
+        feedbackDelayModule.delayNode.connect(nextNode);
+        nextNode = feedbackDelayModule.delayNode.input
+      }
+
+      oscModule.osc1Node.connect(nextNode);
+      oscModule.osc2Node.connect(nextNode);
 
       // Play the oscillators
       oscModule.osc1Node.start(0);
       oscModule.osc1Node.stop(audioContext.currentTime + this.osc1.envelope.sustainTime);
       oscModule.osc2Node.start(0);
       oscModule.osc2Node.stop(audioContext.currentTime + this.osc2.envelope.sustainTime);
-    }
+    };
+
+    this.toggleModulePower = function(moduleName) {
+      this.modules[moduleName].hasPower = !this.modules[moduleName].hasPower;
+    };
+
+    this.moduleHasPower = function(moduleName) {
+      return this.modules[moduleName].hasPower;
+    };
   }
 
   DR2Synth.createSynth = function() {
