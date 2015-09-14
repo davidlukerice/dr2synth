@@ -22,5 +22,14 @@
 
     });
 
+    var osc1TypeKnob = new Knob($('.oscillator1-controls .type input').get()[0], new Ui.P1());
+    osc1TypeKnob.onChanged = function(val) {
+      synth.modules.oscillators.settings.osc1.type = DR2Synth.OscillatorTypes[val];
+    };
+
+    var osc2TypeKnob = new Knob($('.oscillator2-controls .type input').get()[0], new Ui.P1());
+    osc2TypeKnob.onChanged = function(val) {
+      synth.modules.oscillators.settings.osc2.type = DR2Synth.OscillatorTypes[val];
+    };
   };
 })();

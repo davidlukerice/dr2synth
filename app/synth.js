@@ -1,21 +1,24 @@
 (function() {
   function Synth() {
 
-    this.osc1 = {
-      type: 'triangle',
-      envelope: {
-        sustainTime: 0.5
-      }
-    };
-    this.osc2 = {
-      type: 'triangle',
-      envelope: {
-        sustainTime: 0.5
-      }
-    };
-    this.outGain = 0.5;
-
     this.modules = {
+      'oscillators': {
+        hasPower: true,
+        settings: {
+          osc1: {
+            type: 'triangle',
+            envelope: {
+              sustainTime: 0.5
+            }
+          },
+          osc2: {
+            type: 'triangle',
+            envelope: {
+              sustainTime: 0.5
+            }
+          }
+        }
+      },
       'feedbackDelay': {
         hasPower: false,
         settings: {
@@ -33,6 +36,12 @@
           decay: 1, //Impulse response decay rate.
           reverse: 1 // Reverse the impulse response.
         }
+      },
+      'out': {
+        hasPower: true,
+        settings: {
+          outGain: 0.5
+        }
       }
     };
 
@@ -45,12 +54,12 @@
 
     function createOscillatorsModule(note) {
       var osc1Node = audioContext.createOscillator();
-      osc1Node.type = this.osc1.type;
+      osc1Node.type = this.modules.oscillators.settings.osc1.type;
       osc1Node.frequency.value = DR2Synth.Util.frequencyForNote(note);
 
       // Used as a sub oscillator atm
       var osc2Node = audioContext.createOscillator();
-      osc2Node.type = this.osc2.type;
+      osc2Node.type = this.modules.oscillators.settings.osc2.type;
       osc2Node.frequency.value = DR2Synth.Util.frequencyForNote(determineSubNote(note));
 
       return {
@@ -75,7 +84,7 @@
 
     function createOutModule() {
       var gainNode = audioContext.createGain();
-      gainNode.gain.value = this.outGain;
+      gainNode.gain.value = this.modules.out.settings.outGain;
 
       return {
         gainNode: gainNode
@@ -114,9 +123,9 @@
 
       // Play the oscillators
       oscModule.osc1Node.start(0);
-      oscModule.osc1Node.stop(audioContext.currentTime + this.osc1.envelope.sustainTime);
+      oscModule.osc1Node.stop(audioContext.currentTime + this.modules.oscillators.settings.osc1.envelope.sustainTime);
       oscModule.osc2Node.start(0);
-      oscModule.osc2Node.stop(audioContext.currentTime + this.osc2.envelope.sustainTime);
+      oscModule.osc2Node.stop(audioContext.currentTime + this.modules.oscillators.settings.osc2.envelope.sustainTime);
     };
 
     this.toggleModulePower = function(moduleName) {
@@ -131,4 +140,5 @@
   DR2Synth.createSynth = function() {
     return new Synth();
   };
+  DR2Synth.OscillatorTypes = ['sine', 'square', 'sawtooth', 'triangle'];
 })();

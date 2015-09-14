@@ -26,6 +26,7 @@
   "dependencies": {
     "bootstrap": "3.3.5",
     "font-awesome": "4.4.0",
+    "jim-knopf": "git+https://github.com/davidlukerice/jim-knopf.git",
     "jquery": "2.1.4"
   }
 }
