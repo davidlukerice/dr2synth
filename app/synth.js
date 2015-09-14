@@ -6,13 +6,13 @@
         hasPower: true,
         settings: {
           osc1: {
-            type: 'triangle',
+            type: 'sine',
             envelope: {
               sustainTime: 0.5
             }
           },
           osc2: {
-            type: 'triangle',
+            type: 'sine',
             envelope: {
               sustainTime: 0.5
             }
