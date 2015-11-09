@@ -209,3 +209,5 @@ Filter.Allpass = function (context, opts) {
   opts.type = 'allpass';
   return new Filter(context, opts);
 };
+
+export default Filter;
