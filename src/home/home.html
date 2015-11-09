@@ -19,40 +19,50 @@
             <div class="row">
               <div class="oscillator1-controls col-md-12">
                 <h4>Oscillator 1</h4>
-                <div class="step">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="step form-group">
                   <label>Step</label>
+                  <input class="form-control" type="range"disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
-                <div class="fine">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="fine form-group">
                   <label>Fine</label>
+                  <input class="form-control" type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
-                <div class="type">
-                  <input type="range" data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180" data-labels="sin,sqr,saw,tri" />
+                <div class="type form-group">
                   <label>Type</label>
+                  <select
+                    ng-model="home.synthModules.oscillators.settings.osc1.type"
+                    name="osc1Type"
+                    ng-options="type for type in home.oscillatorTypes"
+                    class="form-control">
+                  </select>
                 </div>
-                <div class="mix">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="mix form-group">
                   <label>Mix</label>
+                  <input class="form-control" type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
               </div>
               <div class="oscillator2-controls col-md-12">
                 <h4>Oscillator 2</h4>
-                <div class="step">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="step form-group">
                   <label>Step</label>
+                  <input class="form-control" type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
-                <div class="fine">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="fine form-group">
                   <label>Fine</label>
+                  <input class="form-control" type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
-                <div class="type">
-                  <input type="range" data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180" data-labels="sin,sqr,saw,tri" />
+                <div class="type form-group">
                   <label>Type</label>
+                  <select
+                    ng-model="home.synthModules.oscillators.settings.osc2.type"
+                    name="osc1Type"
+                    ng-options="type for type in home.oscillatorTypes"
+                    class="form-control">
+                  </select>
                 </div>
-                <div class="noise">
-                  <input type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
+                <div class="noise form-group">
                   <label>Noise</label>
+                  <input class="form-control" type="range" disabled data-width="70" data-height="70" data-angleOffset="270" data-angleRange="180"/>
                 </div>
               </div>
             </div>

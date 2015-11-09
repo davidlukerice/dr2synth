@@ -2,10 +2,11 @@
 import DR2Synth from './dr2synth';
 import Delay from './webAudioComponents/delay';
 import SimpleReverb from './webAudioComponents/reverb';
+import _ from 'lodash';
 
-function Synth() {
+function Synth(modules) {
 
-  this.modules = {
+  this.modules = _.defaultsDeep(modules, {
     'oscillators': {
       hasPower: true,
       settings: {
@@ -47,7 +48,7 @@ function Synth() {
         outGain: 0.5
       }
     }
-  };
+  });
 
   var audioContext = new (AudioContext || webkitAudioContext)();
 
@@ -141,7 +142,7 @@ function Synth() {
   };
 }
 
-DR2Synth.createSynth = function() {
-  return new Synth();
+DR2Synth.createSynth = function(modules) {
+  return new Synth(modules);
 };
 DR2Synth.OscillatorTypes = ['sine', 'square', 'sawtooth', 'triangle'];
