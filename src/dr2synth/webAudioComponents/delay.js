@@ -1,5 +1,7 @@
 // Modified version of https://github.com/web-audio-components/delay
 
+import Filter from './filter';
+
 /**
  * Simple delay implementation for the Web Audio API.
  *
@@ -243,3 +245,5 @@ Delay.prototype = Object.create(null, {
   }
 
 });
+
+export default Delay;

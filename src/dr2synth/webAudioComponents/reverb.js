@@ -133,3 +133,5 @@ SimpleReverb.prototype = Object.create(null, {
   }
 
 });
+
+export default SimpleReverb;

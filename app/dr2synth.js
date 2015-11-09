@@ -1,2 +1,0 @@
-
-var DR2Synth = {};
