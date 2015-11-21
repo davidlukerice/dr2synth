@@ -6,7 +6,6 @@ import reverb from '../dr2synth/webAudioComponents/reverb.js';
 import DR2Synth from '../dr2synth/dr2synth.js';
 import util from '../dr2synth/util.js';
 import synth from '../dr2synth/synth.js';
-import inputHandler from '../dr2synth/inputHandler.js';
 
 export default class AppController {
   constructor() {
@@ -15,6 +14,5 @@ export default class AppController {
 
     this.synthModules = {};
     this.synth = DR2Synth.createSynth(this.synthModules);
-    DR2Synth.handleInputs(this.synth);
   }
 }
